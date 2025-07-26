@@ -1,2 +1,0 @@
-/// @description veeoo data
-scrViewData()

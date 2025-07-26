@@ -1,1 +1,0 @@
-door(16,848,torCrownTower)

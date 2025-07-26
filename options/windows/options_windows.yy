@@ -30,7 +30,7 @@
   "option_windows_texture_page":"512x512",
   "option_windows_use_splash":false,
   "option_windows_version":"1.2.0.0",
-  "option_windows_vsync":false,
+  "option_windows_vsync":true,
   "resourceType":"GMWindowsOptions",
   "resourceVersion":"2.0",
 }

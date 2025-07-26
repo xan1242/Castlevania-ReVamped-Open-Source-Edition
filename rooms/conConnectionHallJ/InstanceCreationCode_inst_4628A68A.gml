@@ -1,1 +1,0 @@
-door(384,624,toyToyTowerEast)
