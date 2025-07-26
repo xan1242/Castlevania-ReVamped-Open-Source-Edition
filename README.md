@@ -27,7 +27,7 @@ However, this isn't without some drawbacks. Currently there are a few issues int
 
 - Verb groups need to be created for the Input plugin
 - Button remapping is iffy and needs a massive rework thanks to the plugin update
-- Mobile port has debug code currently enabled (in the top left corner) -- this is because Android versions cannot be ran in Debug mode
+- Button icons are gone due to the Input plugin update
 
 And finally, as for the Vita port - it currently crashes on startup with the YoYo Loader.
 
