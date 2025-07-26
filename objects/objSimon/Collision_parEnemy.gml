@@ -1,7 +1,7 @@
 /// @description take damage, bro
 if i_frames = 0 && !hurting
 {
-	if global.vibration input_vibrate_constant(0.5,0,45)
+	if global.vibration InputVibrateConstant(0.5,0,45)
 	bitsound(sndSimonDamage)
 	if global.cursed_card = 2
 	{

@@ -1,4 +1,6 @@
 /// @description setup
+write_globals();
+texturegroup_load("Cards", true)
 deactivate()
 bitsound(sndPickupHeart)
 scrControls()

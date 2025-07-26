@@ -8,23 +8,40 @@ if global.hearts >= global.hearts_max
 	global.hearts = global.hearts_max
 if global.hearts <= 0
 	global.hearts = 0
-	
-item_messages()
 
 if room = rmLoadGame
+{
 	load_game()
+	write_globals()
+}
+
+update_map_position()
 
 scrControls()
 
-if kPause
+if (kPause /*|| (os_is_paused())*/)
 {
 	global.screen_sprite = sprite_create_from_surface(application_surface, 0, 0, 400, 224, false, false, 0, 0);
 	bitsound(sndMenuPause)
 	if !global.boss_rush 
-		instance_create(x,y,objPauseMenu)
+		if (!instance_exists(objPauseMenu))
+			instance_create(x,y,objPauseMenu)
 	else
-		instance_create(x,y,objPauseMenuBossRush)
+		if (!instance_exists(objPauseMenuBossRush))
+			instance_create(x,y,objPauseMenuBossRush)
 }
+
+if (kMap)
+{
+	if (!global.map_exiting)
+	{
+		bitsound(sndMenuPause)
+		instance_create(x, y, objRegularMap)
+		exit
+	}
+}
+else
+	global.map_exiting = false
 
 //area name tracker
 if area_tracker != global.area //if the area has changed and isn't a transition room...
@@ -33,3 +50,5 @@ if area_tracker != global.area //if the area has changed and isn't a transition 
 		instance_create(x,y,objAreaName)
 	area_tracker = global.area
 }
+
+

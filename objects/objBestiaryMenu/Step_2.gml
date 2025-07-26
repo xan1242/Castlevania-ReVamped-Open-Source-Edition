@@ -13,7 +13,7 @@ if kDownTap && selection < 2
 	bitsound(sndWeaponWhip)
 }
 
-if kCancel
+if kCancel || kPause
 {
 	bitsound(sndMenuSelect)
 	selection = 2

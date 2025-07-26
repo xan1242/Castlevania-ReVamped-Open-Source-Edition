@@ -3,6 +3,8 @@ ds_map_secure_save(global.gallery,"Castlevania_Endings.sav")
 
 instance_create(x,y,objFadeOutShutter)
 
+texturegroup_unload("EndingCards")
+
 if ds_map_find_value(global.gallery,"bossrush") != 1 && global.enemy_collection >= 50
 	room_goto(rmBossRushUnlocked)
 else

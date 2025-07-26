@@ -2,28 +2,41 @@
 scrControls()
 bitBGM(bgmUnderground)
 
+var numOptions = 11
+
 if kUpTap
 {
 	bitsound(sndWeaponWhip)
-	selection += -1
-	if selection <= 0
-		selection = 0
+	selection -= 1
+	if (simple_platform_detect() != SIMPLEPLAT.DESKTOP)
+	{
+		if ((selection == 7) || (selection == 8))
+			selection = 6
+	}
+	if selection < 0
+		selection = numOptions - 1
 }
 
 if kDownTap
 {
 	bitsound(sndWeaponWhip)
 	selection += 1
-	if selection >= 10
-		selection = 10
+	if (simple_platform_detect() != SIMPLEPLAT.DESKTOP)
+	{
+		if ((selection == 7) || (selection == 8))
+			selection = 9
+	}
+		
+	selection %= numOptions
 }
 
 //set options
 if kRightTap
 {
-	bitsound(sndMenuSelect)
+	
 	if selection = 0 //sfx
 		{
+			bitsound(sndMenuSelect)
 			global.volumeSFX += 0.1
 			if global.volumeSFX >= 1
 				global.volumeSFX = 1
@@ -31,6 +44,7 @@ if kRightTap
 		}
 	if selection = 1 //bgm
 		{
+			bitsound(sndMenuSelect)
 			audio_stop_all()
 			global.volumeBGM += 0.1
 			if global.volumeBGM >= 1
@@ -39,32 +53,43 @@ if kRightTap
 		}
 	if selection = 2 //vibration
 		{
+			bitsound(sndMenuSelect)
 			global.vibration = true
 			ds_map_replace(global.options,"vibration",global.vibration)
 		}
 	if selection = 7 //window scale
 		{
-			if ds_map_find_value(global.options,"windowscale") < 7
-				ds_map_replace(global.options,"windowscale",ds_map_find_value(global.options,"windowscale")+1)
-			window_set_size(400 * ds_map_find_value(global.options,"windowscale"), 224 * ds_map_find_value(global.options,"windowscale"));
+			bitsound(sndMenuSelect)
+			if (simple_platform_detect() == SIMPLEPLAT.DESKTOP)
+			{
+				if ds_map_find_value(global.options,"windowscale") < 7
+					ds_map_replace(global.options,"windowscale",ds_map_find_value(global.options,"windowscale")+1)
+				window_set_size(400 * ds_map_find_value(global.options,"windowscale"), 224 * ds_map_find_value(global.options,"windowscale"));
+			}
 		}
 	if selection = 8 //fullscreen
 		{
-			ds_map_replace(global.options,"fullscreen",true)
-			window_set_fullscreen(ds_map_find_value(global.options,"fullscreen"))
+			bitsound(sndMenuSelect)
+			if (simple_platform_detect() == SIMPLEPLAT.DESKTOP)
+			{	
+				ds_map_replace(global.options,"fullscreen",true)
+				window_set_fullscreen(ds_map_find_value(global.options,"fullscreen"))
+			}
 		}
 	if selection = 9 //crt
 		{
+			bitsound(sndMenuSelect)
 			ds_map_replace(global.options,"crt",true)
-			global.crt = true
+			set_crt_filter(true)
 		}
 }
 
 if kLeftTap
 {
-	bitsound(sndMenuSelect)
+	
 	if selection = 0 //sfx
 		{
+			bitsound(sndMenuSelect)
 			global.volumeSFX += -0.1
 			if global.volumeSFX <= 0
 				global.volumeSFX = 0
@@ -72,6 +97,8 @@ if kLeftTap
 		}
 	if selection = 1 //bgm
 		{
+			bitsound(sndMenuSelect)
+			bitsound(sndMenuSelect)
 			audio_stop_all()
 			global.volumeBGM += -0.1
 			if global.volumeBGM <= 0
@@ -80,24 +107,34 @@ if kLeftTap
 		}
 	if selection = 2 //vibration
 		{
+			bitsound(sndMenuSelect)
 			global.vibration = false
 			ds_map_replace(global.options,"vibration",global.vibration)
 		}
 	if selection = 7 //window scale
 		{
-			if ds_map_find_value(global.options,"windowscale") > 1
-				ds_map_replace(global.options,"windowscale",ds_map_find_value(global.options,"windowscale")-1)
-			window_set_size(400 * ds_map_find_value(global.options,"windowscale"), 224 * ds_map_find_value(global.options,"windowscale"));
+			bitsound(sndMenuSelect)
+			if (simple_platform_detect() == SIMPLEPLAT.DESKTOP)
+			{
+				if ds_map_find_value(global.options,"windowscale") > 1
+					ds_map_replace(global.options,"windowscale",ds_map_find_value(global.options,"windowscale")-1)
+				window_set_size(400 * ds_map_find_value(global.options,"windowscale"), 224 * ds_map_find_value(global.options,"windowscale"));
+			}
 		}
 	if selection = 8 //fullscreen
 		{
-			ds_map_replace(global.options,"fullscreen",false)
-			window_set_fullscreen(ds_map_find_value(global.options,"fullscreen"))
+			bitsound(sndMenuSelect)
+			if (simple_platform_detect() == SIMPLEPLAT.DESKTOP)
+			{
+				ds_map_replace(global.options,"fullscreen",false)
+				window_set_fullscreen(ds_map_find_value(global.options,"fullscreen"))
+			}
 		}
 	if selection = 9 //crt
 		{
+			bitsound(sndMenuSelect)
 			ds_map_replace(global.options,"crt",false)
-			global.crt = false
+			set_crt_filter(false)
 		}
 }
 

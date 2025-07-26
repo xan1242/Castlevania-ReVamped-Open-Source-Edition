@@ -115,6 +115,8 @@ function in_view()
 
 function create_bossbar()
 {
+	global.LastBossNumber = boss_number
+	load_boss_assets(boss_number);
 	with( instance_create_depth(x,y,0,objBossBar) )
 		hp_id = other.id
 }

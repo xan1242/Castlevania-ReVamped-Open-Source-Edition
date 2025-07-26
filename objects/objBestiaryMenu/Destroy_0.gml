@@ -1,4 +1,6 @@
 /// @description re-activate + delete screen sprite
+
+
 if sprite_exists(screen_sprite)
 	sprite_delete(screen_sprite)
 	
@@ -16,8 +18,11 @@ if selection = 1
 }
 
 if selection = 2
+{
+	// #TODO janky
+	texturegroup_unload("Bestiary")
 	with( instance_create_depth(x,y,0,objPauseMenu) )
 	{
 		selection = 3
 	}
-
+}

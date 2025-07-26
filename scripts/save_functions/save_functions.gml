@@ -61,6 +61,8 @@ function load_game()
 	global.kinship_card = ds_map_find_value(global.savedata,"kinship_card")
 	global.cursed_card = ds_map_find_value(global.savedata,"cursed_card")
 	
+	DeserializeMapDataFromSaveData();
+	
 	//load circumstances
 
 	with parPlayer
@@ -136,4 +138,75 @@ function write_globals()
 	ds_map_replace(global.savedata,"critical_card",global.critical_card)
 	ds_map_replace(global.savedata,"kinship_card",global.kinship_card)
 	ds_map_replace(global.savedata,"cursed_card",global.cursed_card)
+	
+	switch (global.area)
+	{
+		case 0: //entrance hall
+		{
+			ds_map_replace(global.savedata,"entrance hall save",1)
+			break;
+		}
+		case 1: //torture lab
+		{
+			ds_map_replace(global.savedata,"torture lab save",1)
+			break;
+		}
+		case 2: //underground mine
+		{
+			ds_map_replace(global.savedata,"underground mine save",1)
+			break;
+		}
+		case 3: //castle ruins
+		{
+			ds_map_replace(global.savedata,"castle ruins save",1)
+			break;
+		}
+		case 4: //catacombs
+		{
+			ds_map_replace(global.savedata,"catacombs save",1)
+			break;
+		}
+		case 5: //castle courtyard
+		{
+			ds_map_replace(global.savedata,"castle courtyard save",1)
+			break;
+		}
+		case 6: //tower bridge
+		{
+			ds_map_replace(global.savedata,"tower bridge save",1)
+			break;
+		}
+		case 7: //toy room
+		{
+			ds_map_replace(global.savedata,"toy room save",1)
+			break;
+		}
+		case 8: //dungeon
+		{
+			ds_map_replace(global.savedata,"dungeon save",1)
+			break;
+		}
+		case 9: //marble gallery
+		{
+			ds_map_replace(global.savedata,"marble gallery save",1)
+			break;
+		}
+		case 10: //clock tower
+		{
+			ds_map_replace(global.savedata,"clock tower save",1)
+			break;
+		}
+		default:
+			break;
+	}
+}
+
+function is_enemy_entry_unlocked(entry_number)
+{
+	return ds_map_find_value( global.savedata,"bestiary" + string(entry_number) ) != undefined
+}
+
+function is_boss_entry_unlocked(boss_number)
+{
+	return ds_map_find_value( global.savedata,"bestiary_boss" + string(boss_number) ) != undefined
 }

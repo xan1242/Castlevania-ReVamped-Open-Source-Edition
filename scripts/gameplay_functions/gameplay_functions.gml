@@ -13,6 +13,44 @@ function door(target_x,target_y,target_room)
 
 function area_setup(area_number,map_x,map_y)
 {
+	if (global.LastBossNumber >= 0)
+	{
+		unload_boss_assets(global.LastBossNumber)
+		global.LastBossNumber = -1
+	}
+	
+	if (global.area != argument0)
+	{
+		unload_level_assets(global.area);
+
+		// if it's the entrance gate -- needs to be checked because it shares textures with the connection rooms
+		if ((argument0 == 0) && (argument1 == 1) && (argument2 == 14))
+		{
+			load_level_assets(12);
+			global.bLastRoomWasGateArea = true;
+		}
+		else
+		{
+			load_level_assets(argument0);
+			global.bLastRoomWasGateArea = false;
+		}
+	}
+	else if ((argument0 == 0))
+	{
+		if ((argument1 == 1) && (argument2 == 14))
+		{
+			unload_level_assets(global.area);
+			load_level_assets(12);
+			global.bLastRoomWasGateArea = true;
+		}
+		else if (global.bLastRoomWasGateArea)
+		{
+			unload_level_assets(12);
+			load_level_assets(argument0);
+			global.bLastRoomWasGateArea = false;
+		}
+	}
+	
 	global.area = argument0
 	global.mx = argument1
 	global.my = argument2
@@ -37,4 +75,37 @@ function draw_upgrade()
 			current_pal = 0
 	}
 	draw_palette_ext(palGlobal,current_pal,x,y)
+}
+
+function gameplay_unload()
+{
+	audio_stop_all()
+	unload_all_ingame_assets();
+	gc_collect();
+	
+	with(objGame) instance_destroy()
+	
+	with (all) {
+        if (!persistent) {
+            instance_destroy();
+        }
+    }
+}
+
+function map_init()
+{
+	//DS map for the map
+	for (var dsColumn = 1; dsColumn < 64; dsColumn++) 
+	{
+		for (var dsRow = 1; dsRow < 24; dsRow++) 
+		{
+			for (var dsArea = 0; dsArea < 0; dsArea++)
+			{
+				var StringAdd = "column" + string(dsColumn) + "_" + "row" + string(dsRow) + "_" + "area" + string(dsArea);
+				ds_map_replace(global.savedata, StringAdd, 0 ); //filled in = 0
+				//filled in = 0, blank = 1, checkmark = 3
+				//ds_map_replace(global.savedata, "column1_row4_area0", 1
+			}
+		}
+	}
 }

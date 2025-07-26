@@ -134,7 +134,7 @@
   "resourceType":"GMSprite",
   "resourceVersion":"2.0",
   "sequence":{
-    "$GMSequence":"",
+    "$GMSequence":"v1",
     "%Name":"sprBestiaryEnemies",
     "autoRecord":true,
     "backdropHeight":768,
@@ -486,8 +486,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"Bestiary",
+    "path":"texturegroups/Bestiary",
   },
   "type":0,
   "VTile":false,

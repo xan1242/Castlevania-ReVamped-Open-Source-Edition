@@ -7,4 +7,7 @@ presents a derivative work of
 
 fawnt = fntHUD
 
+timedout = false
+start_time = current_time
+
 bitBGM(bgmCastlevania)

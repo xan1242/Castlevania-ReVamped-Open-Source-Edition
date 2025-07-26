@@ -1,4 +1,5 @@
 /// @description whip out + tile depth
+
 if whipping && image_index >= frame_count() //handle frames when whipping
 	whip_out = true
 if !whipping

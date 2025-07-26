@@ -1,17 +1,11 @@
-/// @description setup
-counter = 0
-number_string = 0
+// Inherit the parent event
+event_inherited();
 
-list_string = "\n"
+var enemyCount = 50
+init(BestiaryEntryType.ENEMY, enemyCount, 0)
 
-selection = 0
-
-deactivate()
-
-cancelled = false
-
-instance_activate_object(objBestiaryEntry)
-
-instance_create(x,y,objFadeInShutter)
-
-scrub = 0
+for (var i = 0; i < enemyCount; i++)
+{
+	var entry = get_enemy_name_numbered(i, true)
+	array_push(entry_list_str, entry)
+}

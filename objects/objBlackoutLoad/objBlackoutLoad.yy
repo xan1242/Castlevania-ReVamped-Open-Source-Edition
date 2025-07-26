@@ -32,10 +32,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"sprBlackout",
-    "path":"sprites/sprBlackout/sprBlackout.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

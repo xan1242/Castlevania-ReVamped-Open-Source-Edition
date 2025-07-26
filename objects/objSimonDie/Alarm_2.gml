@@ -10,11 +10,9 @@ if global.arsenalswap_card = 2
 	ds_map_replace(global.savedata,"corpse room",room)
 	ds_map_replace(global.savedata,"corpse x",x)
 	ds_map_replace(global.savedata,"corpse y",y)
-	if instance_number(objMapSimon) > 0
-	{
-		ds_map_replace(global.savedata,"corpse map x",objMapSimon.x - xview)
-		ds_map_replace(global.savedata,"corpse map y",objMapSimon.y - yview)
-	}
+	var map_pos = get_map_position();
+	ds_map_replace(global.savedata,"corpse map x",map_pos.x)
+	ds_map_replace(global.savedata,"corpse map y",map_pos.y)
 	instance_create(x,y,objCorpseRun)
 }
 else

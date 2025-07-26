@@ -1,6 +1,14 @@
 /// @description choose option or whatever
 scrControls()
 
+function triggerDelete()
+{
+	bitsound(sndDoor)
+	instance_create(x,y,objEarthquake)
+	deleted = true
+	alarm[0] = 300
+}
+
 if kCancel && !deleted
 	{
 		audio_stop_all()
@@ -68,25 +76,29 @@ if kAccept	//&& can_load //load or new game or go to a menu
 	if selection = 5 && ds_map_find_value(global.gallery,"bossrush") != 1
 		bitsound(sndMenuReject)
 	}
-	
+
 if kMap && selection < 3//force new game
 {
-	bitsound(sndDoor)
-	
-	instance_create(x,y,objEarthquake)
-	
-	deleted = true
-	
-	alarm[0] = 300
-	
-	if selection = 0
-		{simon0_new = true deleted0 = true}
+	if selection = 0 && !simon0_new
+	{
+		triggerDelete()
+		simon0_new = true
+		deleted0 = true
+	}
 		
-	if selection = 1 
-		{simon1_new = true deleted1 = true}
+	if selection = 1  && !simon1_new
+	{
+		triggerDelete()
+		simon1_new = true 
+		deleted1 = true
+	}
 		
-	if selection = 2
-		{simon2_new = true deleted2 = true}
+	if selection = 2 && !simon2_new
+	{
+		triggerDelete()
+		simon2_new = true 
+		deleted2 = true
+	}
 }
 	
 if kSwap && selection < 3 //&& can_load //load or new game or go to a menu

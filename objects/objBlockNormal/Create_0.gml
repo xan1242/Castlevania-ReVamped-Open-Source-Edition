@@ -1,4 +1,4 @@
 /// @description depth
-depth = 250
+depth = 150
 make_debris = false
 alarm[0] = 5

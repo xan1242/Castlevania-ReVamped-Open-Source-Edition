@@ -1,9 +1,12 @@
 /// @description re-activate + delete screen sprite
+bitsound(sndPickupHeart)
+with(objTouchControls) { visible = false }
+
 if sprite_exists(screen_sprite)
 	sprite_delete(screen_sprite)
-	
+
+instance_create(x,y,objFadeInShutter)
 instance_activate_all()
-bitsound(sndPickupHeart)
 
 if selection = 0
 {

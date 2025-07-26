@@ -21,7 +21,6 @@
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"fb020452-8b8f-4ad8-a513-577208b97246","blendMode":0,"displayName":"outline","isLocked":false,"name":"fb020452-8b8f-4ad8-a513-577208b97246","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
-    {"$GMImageLayer":"","%Name":"95faafc9-8514-420f-a927-e1b88f8adfda","blendMode":0,"displayName":"Layer 1","isLocked":true,"name":"95faafc9-8514-420f-a927-e1b88f8adfda","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"sprBestiaryEntry",
   "nineSlice":null,
@@ -34,7 +33,7 @@
   "resourceType":"GMSprite",
   "resourceVersion":"2.0",
   "sequence":{
-    "$GMSequence":"",
+    "$GMSequence":"v1",
     "%Name":"sprBestiaryEntry",
     "autoRecord":true,
     "backdropHeight":768,
@@ -65,6 +64,8 @@
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
+    "seqHeight":224.0,
+    "seqWidth":400.0,
     "showBackdrop":true,
     "showBackdropImage":false,
     "timeUnits":1,
@@ -86,8 +87,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"Bestiary",
+    "path":"texturegroups/Bestiary",
   },
   "type":0,
   "VTile":false,

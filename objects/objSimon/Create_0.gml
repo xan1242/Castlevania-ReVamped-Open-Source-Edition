@@ -64,3 +64,6 @@ whip_frames = 15
 whip_out = false
 whip_counter = 0
 flame_counter = 0
+
+is_aimlock = false
+is_on_ground = true

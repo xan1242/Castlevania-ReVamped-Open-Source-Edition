@@ -11,4 +11,4 @@ bitfanfare(bgmFanfarePlayerMiss)
 if global.richard
 	alarm[3] = 30
 
-if global.vibration input_vibrate_constant(0.8,0,120)
+if global.vibration InputVibrateConstant(0.8,0,120)

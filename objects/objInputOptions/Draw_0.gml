@@ -2,65 +2,66 @@
 var _string = "";
 _string += "INPUT OPTIONS\n";
 _string += "\n";
-_string += input_verb_get_icon("cancel") + " = Return  " + input_verb_get_icon("map") + " = Reset Defaults\n" ;
+_string += InputIconGet(INPUT_VERB.CANCEL) + " = Return  " + InputIconGet(INPUT_VERB.MAP) + " = Reset Defaults\n" ;
 
 //Show the rebinding menu if we're paused
 if (pause)
 {
-    if (!input_binding_scan_in_progress())
+    var _device = InputPlayerGetDevice();
+    if (!InputDeviceGetRebinding(_device))
     {
         _string += "Select an action to remap:\n";
         _string += "\n";
         
         //This is a bit clumsy but sufficient for this example
         //In a real situation you'll probably want to handle this with an array
-        if (menu_selection == 0) _string += "♦  ";
-        _string += input_verb_get_icon("left") + " = LEFT\n";
+        if (menu_selection == 0) _string += ">  ";
+        _string += InputIconGet(INPUT_VERB.LEFT) + " = LEFT\n";
         
-        if (menu_selection == 1) _string += "♦  ";
-        _string += input_verb_get_icon("right") + " = RIGHT\n";
+        if (menu_selection == 1) _string += ">  ";
+        _string += InputIconGet(INPUT_VERB.RIGHT) + " = RIGHT\n";
         
-        if (menu_selection == 2) _string += "♦  ";
-        _string += input_verb_get_icon("up") + " = UP\n";
+        if (menu_selection == 2) _string += ">  ";
+        _string += InputIconGet(INPUT_VERB.UP) + " = UP\n";
         
-        if (menu_selection == 3) _string += "♦  ";
-        _string += input_verb_get_icon("down") + " = DOWN\n";
+        if (menu_selection == 3) _string += ">  ";
+        _string += InputIconGet(INPUT_VERB.DOWN) + " = DOWN\n";
         
-        if (menu_selection == 4) _string += "♦  ";
-        _string += input_verb_get_icon("jump") + " = JUMP\n";
+        if (menu_selection == 4) _string += ">  ";
+        _string += InputIconGet(INPUT_VERB.JUMP) + " = JUMP\n";
 		
-        if (menu_selection == 5) _string += "♦  ";
-        _string += input_verb_get_icon("attack") + " = MAIN WEAPON\n";
+        if (menu_selection == 5) _string += ">  ";
+        _string += InputIconGet(INPUT_VERB.ATTACK) + " = MAIN WEAPON\n";
         
-        if (menu_selection == 6) _string += "♦  ";
-        _string += input_verb_get_icon("subweapon") + " = SUBWEAPON\n";
+        if (menu_selection == 6) _string += ">  ";
+        _string += InputIconGet(INPUT_VERB.SUBWEAPON) + " = SUBWEAPON\n";
         
-        if (menu_selection == 7) _string += "♦  ";
-        _string += input_verb_get_icon("dash") + " = DASH\n";
+        if (menu_selection == 7) _string += ">  ";
+        _string += InputIconGet(INPUT_VERB.DASH) + " = DASH\n";
         
-        if (menu_selection == 8) _string += "♦  ";
-        _string += input_verb_get_icon("swap") + " = SWAP WEAPON\n";
+        if (menu_selection == 8) _string += ">  ";
+        _string += InputIconGet(INPUT_VERB.SWAP) + " = SWAP WEAPON\n";
         
-	    if (menu_selection == 9) _string += "♦  ";
-        _string += input_verb_get_icon("aimlock") + " = LOCK MOVEMENT\n";
+	    if (menu_selection == 9) _string += ">  ";
+        _string += InputIconGet(INPUT_VERB.AIMLOCK) + " = LOCK MOVEMENT\n";
 		
-        if (menu_selection == 10) _string += "♦  ";
-        _string += input_verb_get_icon("pause") + " = PAUSE SCREEN\n";
+        if (menu_selection == 10) _string += ">  ";
+        _string += InputIconGet(INPUT_VERB.PAUSE) + " = PAUSE SCREEN\n";
 		
-        if (menu_selection == 11) _string += "♦  ";
-        _string += input_verb_get_icon("map") + " = MAP SCREEN\n";
+        if (menu_selection == 11) _string += ">  ";
+        _string += InputIconGet(INPUT_VERB.MAP) + " = MAP SCREEN\n";
     }
     else
     {
         //Display what verb we're rebinding if we're scanning for a new verb
-        _string += "REBINDING \"" + rebinding_verb + "\" (TIME = " + string(input_binding_scan_time_remaining()) + "ms)\n";
-        //_string += "Wait to cancel rebinding\n";
+        _string += "REBINDING \"" + InputVerbGetExportName(rebinding_verb);
+        _string += "\nWait 5s to cancel rebinding\n";
     }
 }
 else
 {
     //Display a control prompt for basic player movement
-    _string += input_verb_get_icon("left") + "/" + input_verb_get_icon("right") + "/" + input_verb_get_icon("up") + "/" + input_verb_get_icon("down") + " = Move\n";
+    _string += InputIconGet(INPUT_VERB.LEFT) + "/" + InputIconGet(INPUT_VERB.RIGHT) + "/" + InputIconGet(INPUT_VERB.UP) + "/" + InputIconGet(INPUT_VERB.DOWN) + " = Move\n";
 }
 
 draw_set_font(fntMessage)

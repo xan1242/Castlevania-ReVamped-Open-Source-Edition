@@ -4,19 +4,19 @@ credits_text = @"
 -- CASTLEVANIA RE-VAMPED --
 
 
-[[ GAME DESIGN & PRODUCTION ]
+[ GAME DESIGN & PRODUCTION ]
 William ''Lv.4 WALL'' Perez
 
 
-[[ FLAVOR TEXT ]
+[ FLAVOR TEXT ]
 Ivan Perez
 
 
-[[ MAP & LAYOUT DESIGN ]
+[ MAP & LAYOUT DESIGN ]
 Lv.4 WALL
 
 
-[[ GRAPHIC ARTISTS ]
+[ GRAPHIC ARTISTS ]
 Hansungkee
 ZeroSaberGreen
 Murphmario
@@ -27,18 +27,18 @@ Lexou Duck
 Stardust Nova
 
 
-[[ MUSICIANS ]
+[ MUSICIANS ]
 Raspberry Oatshark
 Shimoine
 
 
-[[ SPECIAL THANKS ]
+[ SPECIAL THANKS ]
 WarMachine Studios
 Mr. P's Castlevania Realm
 The Castlevania Dungeon
 
 
-[[ TESTING ]
+[ TESTING ]
 Jack Beauchamp
 Marilyn Hannan
 Max Morrone

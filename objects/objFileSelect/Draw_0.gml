@@ -17,7 +17,7 @@ draw_set_halign(fa_left)
 if deleted
 {
 	draw_set_halign(fa_right)
-	draw_text_outline(400 - 8,224 - 10,c_white,nes_red,"Press " + input_verb_get_icon("cancel") + " to undo file delete.")
+	draw_text_outline(400 - 8,224 - 10,c_white,nes_red,"Press " + InputIconGet(INPUT_VERB.CANCEL) + " to undo file delete.")
 	draw_set_halign(fa_left)
 }
 file0icon = ds_map_find_value(global.options,"icon file 0")
@@ -33,13 +33,13 @@ if simon2_new
 
 
 if selection == 0
-	draw_sprite(sprItemIcons,file0icon,x-20,y+ 8 + (32*selection) )
+	draw_sprite(sprItemIcons,file0icon,x-20,y + (32*selection) )
 if selection == 1
-	draw_sprite(sprItemIcons,file1icon,x-20,y+ 8 + (32*selection) )
+	draw_sprite(sprItemIcons,file1icon,x-20,y + (32*selection) )
 if selection == 2
-	draw_sprite(sprItemIcons,file2icon,x-20,y+ 8 + (32*selection) )
+	draw_sprite(sprItemIcons,file2icon,x-20,y + (32*selection) )
 if selection > 2
-	draw_sprite(sprItemIcons,0,x-20,y+ 8 + (32*selection) )
+	draw_sprite(sprItemIcons,0,x-20,y + (32*selection) )
 	
 
 {//new files
@@ -126,7 +126,8 @@ if selection > 2
 }
 
 {//controls key
-	controlkey = input_verb_get_icon("accept") + " Confirm\n" + input_verb_get_icon("map") + " Delete File"
+	//controlkey = InputIconGet(INPUT_VERB.ACCEPT) + " Confirm\n" + InputIconGet(INPUT_VERB.MAP) + " Delete File"
+    controlkey = InputIconGet(INPUT_VERB.ACCEPT) + " Confirm\n" + InputIconGet(INPUT_VERB.MAP) + " Delete File"
 	draw_text_scribble(200,192,controlkey)
 }
 

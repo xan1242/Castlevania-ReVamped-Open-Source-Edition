@@ -2,14 +2,14 @@
   "$GMSound":"",
   "%Name":"sndDrip",
   "audioGroupId":{
-    "name":"audiogroup_default",
-    "path":"audiogroups/audiogroup_default",
+    "name":"SoundFXInGame",
+    "path":"audiogroups/SoundFXInGame",
   },
   "bitDepth":0,
   "bitRate":128,
-  "compression":0,
+  "compression":1,
   "conversionMode":0,
-  "duration":1.393197,
+  "duration":1.3931973,
   "name":"sndDrip",
   "parent":{
     "name":"3. SFX",

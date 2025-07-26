@@ -4,7 +4,7 @@ if !selected
 {
 	if kSwap or kCancel
 	{
-		if global.vibration input_vibrate_constant(0.5,0,5)
+		if global.vibration InputVibrateConstant(0.5,0,5)
 		bitsound(sndWeaponWhip)
 		selected = true alarm[0] = 60
 	}

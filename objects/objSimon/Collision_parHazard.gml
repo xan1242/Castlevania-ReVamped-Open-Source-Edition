@@ -1,7 +1,7 @@
 /// @description take damage and respawn
 if i_frames = 0 && !hurting && !hazard_damage
 {
-	if global.vibration input_vibrate_constant(0.5,0,60)
+	if global.vibration InputVibrateConstant(0.5,0,60)
 	instance_destroy(objWhip)
 	bitsound(sndSimonDamage)
 	if global.cursed_card = 2

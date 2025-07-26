@@ -49,3 +49,11 @@ if global.timestop > 0
 {
 	global.timestop += -1
 }
+
+if (INPUT_ON_MOBILE)
+{
+	if (global.vbutton_debug.Pressed())
+	{
+		doDebugThing();
+	}
+}

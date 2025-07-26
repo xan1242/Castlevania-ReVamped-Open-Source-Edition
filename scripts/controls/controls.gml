@@ -1,27 +1,36 @@
+// #TODO: this needs to get absolutely NUKED. As it's used everywhere, we'll use this to read out of the global state as a workaround...
+// Removing this function would break a lot of functions, so we have to work around stuff.
+// This function sucks because it implicitly sets variables in the calling object's scope instead of just making it global
+
 function scrControls()
 {//controls
-	kLeft = input_check("left");
-	kRight= input_check("right");
-	kUp= input_check("up");
-	kDown= input_check("down");
-
-	kAttack= input_check_pressed("attack"); kAttackHold= input_check("attack");
-	kJump= input_check_pressed("jump");	kJumpRelease= input_check_released("jump");
-	kSubweapon = input_check_pressed("subweapon");
-	kDash = input_check("dash");
 	
-	kSwap = input_check_pressed("swap");
-	
-	kAimLock = input_check("aimlock");
+	kLeft = global._inputs[INPUT_VERB.LEFT];
+	kRight = global._inputs[INPUT_VERB.RIGHT];
+	kUp = global._inputs[INPUT_VERB.UP];
+	kDown = global._inputs[INPUT_VERB.DOWN];
 
-	kAccept= input_check_pressed("accept");
-	kCancel= input_check_pressed("cancel");
-	kPause= input_check_pressed("pause"); kPauseHold= input_check("pause");
-	kMap= input_check_pressed("map");
+	kAttack = global._inputs_pressed[INPUT_VERB.ATTACK];
+	kAttackHold = global._inputs[INPUT_VERB.ATTACK];
+	kJump = global._inputs_pressed[INPUT_VERB.JUMP];
+	kJumpRelease = global._inputs_released[INPUT_VERB.JUMP];
+	
+	kSubweapon = global._inputs_pressed[INPUT_VERB.SUBWEAPON];
+	kDash = global._inputs[INPUT_VERB.DASH];
+	
+	kSwap = global._inputs_pressed[INPUT_VERB.SWAP];
+	
+	kAimLock = global._inputs[INPUT_VERB.AIMLOCK];
+
+	kAccept= global._inputs_pressed[INPUT_VERB.ACCEPT];
+	kCancel= global._inputs_pressed[INPUT_VERB.CANCEL];
+	kPause= global._inputs_pressed[INPUT_VERB.PAUSE]; 
+	kPauseHold= global._inputs[INPUT_VERB.PAUSE];
+	kMap= global._inputs_pressed[INPUT_VERB.MAP];
 
 	//tapping, for menus
-	kLeftTap = input_check_pressed("left");
-	kRightTap = input_check_pressed("right");
-	kUpTap = input_check_pressed("up");
-	kDownTap = input_check_pressed("down");
+	kLeftTap = global._inputs_pressed[INPUT_VERB.LEFT];
+	kRightTap = global._inputs_pressed[INPUT_VERB.RIGHT];
+	kUpTap = global._inputs_pressed[INPUT_VERB.UP];
+	kDownTap = global._inputs_pressed[INPUT_VERB.DOWN];	
 }

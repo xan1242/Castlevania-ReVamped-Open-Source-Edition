@@ -1,8 +1,5 @@
 /// @description physics for falling + invisible when hidden
 scrPhysics()
-if place_meeting(x,y,parSolid)
-	visible = false
-else
-	visible = true
+visible = !place_meeting(x,y,parSolid)
 	
 xspeed *= 0.9

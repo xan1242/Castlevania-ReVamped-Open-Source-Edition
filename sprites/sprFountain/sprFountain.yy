@@ -35,7 +35,7 @@
   "resourceType":"GMSprite",
   "resourceVersion":"2.0",
   "sequence":{
-    "$GMSequence":"",
+    "$GMSequence":"v1",
     "%Name":"sprFountain",
     "autoRecord":true,
     "backdropHeight":768,
@@ -66,6 +66,8 @@
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
+    "seqHeight":160.0,
+    "seqWidth":356.0,
     "showBackdrop":true,
     "showBackdropImage":false,
     "timeUnits":1,
@@ -93,8 +95,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"LvlCourtyard",
+    "path":"texturegroups/LvlCourtyard",
   },
   "type":0,
   "VTile":false,

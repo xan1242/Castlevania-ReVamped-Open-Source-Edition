@@ -32,7 +32,7 @@ if global.vibration
 else
 	vibratetext = "Vibration - [Off]   On "
 
-if global.crt
+if global.oldtvfilter_enabled
 	crttext = "CRT Filter -  Off   [On]"
 else
 	crttext = "CRT Filter - [Off]   On "
@@ -44,8 +44,19 @@ draw_text(x,y + 48,"Game Input Settings")
 draw_text(x,y + 64,"Menu Input Settings")
 draw_text(x,y + 80,"Restore Defaults")
 draw_text(x,y + 96,"Credits")
+if (simple_platform_detect() != SIMPLEPLAT.DESKTOP)
+{
+	draw_set_color(c_gray)
+}
+
 draw_text(x,y + 112,windowtext)
 draw_text(x,y + 128,fullscreentext)
+
+if (simple_platform_detect() != SIMPLEPLAT.DESKTOP)
+{
+	draw_set_color(c_white)
+}
+
 draw_text(x,y + 144,crttext)
 draw_text(x,y + 160,"Back")
 

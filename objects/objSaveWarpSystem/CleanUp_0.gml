@@ -1,0 +1,1 @@
+with(objWarpMap) instance_destroy()

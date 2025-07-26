@@ -9,4 +9,4 @@ draw_text_outline(x,round(y),nes_red,c_white,credits_text)
 
 //draw_text(32,0,y)
 
-depth = -99999999
+depth = -148

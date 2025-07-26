@@ -1,6 +1,7 @@
 /// @description reset to save and shit
 if !global.boss_rush
 {
+	write_globals()
 	room_goto(global.save_room)
 	instance_create(global.save_x,global.save_y,objSimon)
 	global.hp = global.hp_max

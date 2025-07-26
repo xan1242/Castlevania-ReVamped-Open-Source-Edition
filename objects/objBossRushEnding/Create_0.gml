@@ -1,5 +1,6 @@
 /// @description setup
 deactivate()
+write_globals();
 bitBGM(bgmLullabySentToTheDevil)
 instance_create(x,y,objFadeInShutter)
 

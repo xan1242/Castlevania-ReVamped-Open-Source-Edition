@@ -7,12 +7,12 @@ function draw_palette(PaletteSprite, PaletteNumber)
 	yscale = image_yscale
 
 	if visible=true
-		{
-		    draw_sprite_ext(sprite_index, image_index, x, y, xscale, yscale, image_angle, c_white, image_alpha);
-		    pal_swap_set(argument0,argument1,0);  
-		    draw_sprite_ext(sprite_index, image_index, x, y, xscale, yscale, image_angle, c_white, image_alpha);
-		    pal_swap_reset() 
-		}
+	{
+		draw_sprite_ext(sprite_index, image_index, x, y, xscale, yscale, image_angle, c_white, image_alpha);
+		pal_swap_set(argument0,argument1,0);  
+		draw_sprite_ext(sprite_index, image_index, x, y, xscale, yscale, image_angle, c_white, image_alpha);
+		pal_swap_reset() 
+	}
 }
 	
 function draw_palette_ext(PaletteSprite, PaletteNumber, drawx, drawy)
@@ -20,16 +20,16 @@ function draw_palette_ext(PaletteSprite, PaletteNumber, drawx, drawy)
 	/// @function draw_palette_ext(PaletteSprite, PaletteNumber,x,y);
 	//black outline
 	
-	xscale = image_xscale
-	yscale = image_yscale
+	//xscale = image_xscale
+	//yscale = image_yscale
 		
 	if visible=true
-		{
-		    draw_sprite_ext(sprite_index, image_index, argument2, argument3, xscale, yscale, image_angle, c_white, image_alpha);
-		    pal_swap_set(argument0,argument1,0);  
-		    draw_sprite_ext(sprite_index, image_index, argument2, argument3, xscale, yscale, image_angle, c_white, image_alpha);
-		    pal_swap_reset() 
-		}
+	{
+		draw_sprite_ext(sprite_index, image_index, argument2, argument3, image_xscale, image_yscale, image_angle, c_white, image_alpha);
+		pal_swap_set(argument0,argument1,0);  
+		draw_sprite_ext(sprite_index, image_index, argument2, argument3, image_xscale, image_yscale, image_angle, c_white, image_alpha);
+		pal_swap_reset() 
+	}
 }
 
 function pal_swap_init_system()

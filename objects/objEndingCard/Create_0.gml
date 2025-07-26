@@ -1,5 +1,7 @@
 /// @description setup
 image_speed = 0
+texturegroup_load("EndingCards", true)
+write_globals();
 
 grow = true
 shrink = false

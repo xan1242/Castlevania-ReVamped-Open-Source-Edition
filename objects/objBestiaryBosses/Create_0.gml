@@ -1,17 +1,11 @@
-/// @description setup
-counter = 0
-number_string = 0
+// Inherit the parent event
+event_inherited();
 
-list_string = "\n"
+var bossCount = 10
+init(BestiaryEntryType.BOSS, bossCount, 0)
 
-selection = 0
-
-deactivate()
-
-cancelled = false
-
-instance_activate_object(objBestiaryEntry)
-
-instance_create(x,y,objFadeInShutter)
-
-scrub = 0
+for (var i = 0; i < bossCount; i++)
+{
+	var entry = get_boss_name_numbered(i, true)
+	array_push(entry_list_str, entry)
+}

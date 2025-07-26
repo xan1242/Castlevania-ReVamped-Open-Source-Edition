@@ -1,6 +1,10 @@
 /// @description controlled actions, masks, OoB
 scrPhysics()
 scrControls()
+
+is_aimlock = kAimLock
+is_on_ground = on_ground()
+
 {//set xspeed to 0 when it has been chopped into small enough pieces
 	if abs(xspeed) < 0.1
 		xspeed = 0
@@ -18,7 +22,7 @@ if can_control
 	}
 		
 	{//manual stopping
-		if on_ground() && !kLeft && !kRight
+		if is_on_ground && !kLeft && !kRight
 			xspeed *= walk_deccel
 	}
 		
@@ -38,7 +42,7 @@ if can_control
 	}
 		
 	{//ducking
-		if kDown && on_ground() = true && !kAimLock
+		if kDown && is_on_ground = true && !kAimLock
 			ducking = true
 		else
 			if !place_meeting(x,y-3,parSolid)
@@ -46,7 +50,7 @@ if can_control
 	}
 		
 	{//jumping + dubble jumping + walljump takeoff
-		if ( kJump && on_ground() = true && !ducking ) or ( kJump && on_wall && global.walljump && on_ground() = false )
+		if ( kJump && is_on_ground = true && !ducking ) or ( kJump && on_wall && global.walljump && is_on_ground = false )
 		{
 			if on_wall && global.walljump
 			{
@@ -61,7 +65,7 @@ if can_control
 			else
 				bitsound(sndSimonWalljump)
 		}
-		if global.dubble_jump && kJump && on_ground() = false && !dubble_jumped && !on_wall && !in_water//&& yspeed >=0
+		if global.dubble_jump && kJump && is_on_ground = false && !dubble_jumped && !on_wall && !in_water//&& yspeed >=0
 		{
 			dubble_jumped = true
 			yspeed = -jumpspeed
@@ -72,7 +76,7 @@ if can_control
 	{//whipping + whip aiming
 		if kAttack
 		{
-			if global.vibration input_vibrate_constant(0.8,0,5)
+			if global.vibration InputVibrateConstant(0.8,0,5)
 			attacking = true
 			whipping = true
 			whip_counter = 0
@@ -95,10 +99,10 @@ if can_control
 					if kUp
 						aim_dir = UP_DIAG
 				//aim downwards
-				if kDown && on_ground() = false && !kLeft && !kRight
+				if kDown && is_on_ground = false && !kLeft && !kRight
 					aim_dir = DOWN
 				else
-					if kDown && on_ground() = false
+					if kDown && is_on_ground = false
 						aim_dir = DOWN_DIAG
 			}
 			instance_create(x,y,objWhip)
@@ -106,7 +110,7 @@ if can_control
 	}
 		
 	{//sliding + super sliding
-		if global.slide && ducking && kJump && on_ground() = true && !kAimLock
+		if global.slide && ducking && kJump && is_on_ground = true && !kAimLock
 		{
 			bitsound(sndSimonWalljump)
 			sliding = true
@@ -121,7 +125,7 @@ if can_control
 		
 	{//wall-sliding (walljump)
 		on_wall = false
-		if global.walljump && on_ground() = false && yspeed >= 0 && !in_water
+		if global.walljump && is_on_ground = false && yspeed >= 0 && !in_water
 		{
 			if ( kLeft or kDash ) && position_meeting(x - 6, y, parSolid) && position_meeting(x - 6, y + 9, parSolid) && position_meeting(x - 6, y - 9, parSolid)
 			{
@@ -176,9 +180,9 @@ if can_control
 	}
 		
 	{//ground poundin'
-		if global.ground_pound && on_ground() = false && kDown && kJump
+		if global.ground_pound && is_on_ground = false && kDown && kJump
 		{
-			if global.vibration input_vibrate_constant(0.8,0,30)
+			if global.vibration InputVibrateConstant(0.8,0,30)
 			pounding = true
 			yspeed = 0
 			xspeed = 0
@@ -223,7 +227,7 @@ if can_control
 		//actual subweapon input and spawning!
 		if kSubweapon && global.current_subweapon > 0 && global.hearts >= global.subweapon_cost && can_subweapon
 		{
-			if global.vibration input_vibrate_constant(0.5,0,5)
+			if global.vibration InputVibrateConstant(0.5,0,5)
 			global.hearts += -global.subweapon_cost
 			attacking = true
 			throw_y = -4
@@ -263,7 +267,7 @@ if can_control
 		pace_counter += 1
 		if global.blazingsteps_card = 2 && pace_counter >= 15
 		{
-			if on_ground() = true && xspeed != 0
+			if is_on_ground = true && xspeed != 0
 				instance_create(x,y,objBlazingPace)
 			pace_counter = 0
 		}
@@ -285,19 +289,19 @@ if kJumpRelease && yspeed < 0 //shortjumping
 
 if attacking //stop when on ground and attackin
 {
-	if on_ground() = true
+	if is_on_ground = true
 		xspeed *= walk_deccel
 }
 
 if whipping //handle frames when whipping
 {
 	//cancel downwards whipping if you land
-	if aim_dir = DOWN && on_ground() = true
+	if aim_dir = DOWN && is_on_ground = true
 	{
 		attacking = false
 		whipping = false
 	}
-	if aim_dir = DOWN_DIAG && on_ground() = true
+	if aim_dir = DOWN_DIAG && is_on_ground = true
 	{
 		attacking = false
 		whipping = false
@@ -316,9 +320,9 @@ if sliding //slow and return from slide
 		if xspeed = 0
 			{xspeed = slidespeed * facing * -1	facing *= -1}
 	}
-	if xspeed = 0 && on_ground() = true
+	if xspeed = 0 && is_on_ground = true
 		sliding = false
-	if global.vibration input_vibrate_constant(0.01,0,5)
+	if global.vibration InputVibrateConstant(0.01,0,5)
 	/*if !place_meeting(x + (facing * 12),y + 14,parSolid)
 	{
 		xspeed = 0
@@ -332,13 +336,13 @@ if dashing //slow and return from slide
 	if yspeed = 0 && yspeed_accel != 0 && !place_meeting(x,y+1,parSolid) && ( place_meeting(x-xspeed,y+1,parSolid) or place_meeting(x+xspeed,y+1,parSolid) )
 		y = round(y/8) * 8
 		
-	if global.vibration input_vibrate_constant(0.1,0,5)
+	if global.vibration InputVibrateConstant(0.1,0,5)
 	dash_counter += 1
 	//if !place_meeting(x + (facing),y,parSolid)
 		yspeed = 0		
 	
 	stored_y = y
-	if !on_ground()
+	if !is_on_ground
 		move_snap(1,8)
 	if place_meeting(x,y,parSolid)
 		y = stored_y
@@ -377,7 +381,7 @@ if dashing //slow and return from slide
 	}
 	//double jump out of a dash
 	{
-		if global.dubble_jump && kJump && on_ground() = false && !dubble_jumped && !on_wall && !in_water//&& yspeed >=0
+		if global.dubble_jump && kJump && is_on_ground = false && !dubble_jumped && !on_wall && !in_water//&& yspeed >=0
 		{
 			dubble_jumped = true
 			yspeed = -jumpspeed
@@ -393,9 +397,9 @@ if dashing //slow and return from slide
 if pounding //know when to stop ground pound
 {
 	xspeed = 0
-	if on_ground() = true
+	if is_on_ground = true
 	{
-		if global.vibration input_vibrate_constant(0.8,0,15)
+		if global.vibration InputVibrateConstant(0.8,0,15)
 		pound_counter += 1
 		audio_stop_sound(sndSimonPound)
 		if pound_counter = 1
@@ -413,7 +417,7 @@ if pounding //know when to stop ground pound
 if cling > 0 && position_meeting(x + ( 6 * facing ), y, parSolid) && position_meeting(x + ( 6 * facing ), y + 9, parSolid) && position_meeting(x + ( 6 * facing ), y - 9, parSolid)
 	on_wall = true
 
-if on_ground() = true
+if is_on_ground = true
 	dubble_jumped = false
 
 #endregion
@@ -423,19 +427,19 @@ if on_ground() = true
 if place_meeting(x,y+2,parSolid) && yspeed > 0
 {
 	bitsound(sndSimonLand)
-	if global.vibration input_vibrate_constant(0.7,0,5)
+	if global.vibration InputVibrateConstant(0.7,0,5)
 }
 #endregion
 
 #region //MASK + CLIPPING MANAGEMENT
 
 //dont allow standing when crouch walking in a hole
-if !ducking && !sliding && place_meeting(x,y-3,parSolid) && on_ground() = true
+if !ducking && !sliding && place_meeting(x,y-3,parSolid) && is_on_ground = true
 {
 	ducking = true
 	dashing = false
 }
-if on_ground() = false
+if is_on_ground = false
 {
 	ducking = false
 	//sliding = false

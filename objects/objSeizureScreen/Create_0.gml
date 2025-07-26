@@ -7,3 +7,7 @@ This game contains flashing lights, patterns, and shaking effects that may cause
 Stop playing if you experience altered vision, muscle or eye twitching, loss of awareness or disorientation."
 
 fawnt = fntMessage
+
+timeout_period = 6000
+timedout = false
+start_time = current_time

@@ -1,123 +1,77 @@
 /// @description control the entries + deactivate
+if (!visible)
+	exit
+
 scrControls()
 
-if kCancel && visible
-	alarm[0] = 1
-	
-if kPause && visible
-	alarm[0] = 1
-
-if visible
+if kCancel || kPause
 {
-	if kDown
-		scroll += 1
-	if kUp
-		scroll -= 1
+	hideMenu()
+	exit
 }
+
+var last_entry = entry_number
+	
+if kDown
+	scroll += 1
+if kUp
+	scroll -= 1
 
 if scroll < 0
 	scroll = 0
 if scroll > 240
 	scroll = 240
 
-if entry_type = ENEMY && visible
+if kRightTap
 {
-	if kRightTap
-	{
-		scroll = 0
-		global.enemy_entry += 1
-		bitsound(sndWeaponWhip)
-	}
-	if kLeftTap
-	{
-		scroll = 0
-		global.enemy_entry -= 1
-		bitsound(sndWeaponWhip)
-	}
+	entry_number += 1
+	bitsound(sndWeaponWhip)
+}
+if kLeftTap
+{
+	entry_number -= 1
+	bitsound(sndWeaponWhip)
+}
 	
-	if !kRight && !kLeft
-		scrub = 0
+if !kRight && !kLeft
+	scrub = 0
 
-	if kRight
+if kRight
+{
+	scrub += 1
+	if scrub > 30 && scrub/5 = round(scrub/5)
 	{
-		scrub += 1
-		if scrub > 30 && scrub/5 = round(scrub/5)
-		{
-			scroll = 0
-			global.enemy_entry += 1
-			bitsound(sndWeaponWhip)
-		}
-	}
-
-	if kLeft
-	{
-		scrub += 1
-		if scrub > 30 && scrub/5 = round(scrub/5)
-		{
-			scroll = 0
-			global.enemy_entry -= 1
-			bitsound(sndWeaponWhip)
-		}
+		entry_number += 1
+		bitsound(sndWeaponWhip)
 	}
 }
 
-if entry_type = BOSS && visible
+if kLeft
 {
-	if kRightTap
+	scrub += 1
+	if scrub > 30 && scrub/5 = round(scrub/5)
 	{
-		scroll = 0
-		global.boss_entry += 1
+		entry_number -= 1
 		bitsound(sndWeaponWhip)
-	}
-	if kLeftTap
-	{
-		scroll = 0
-		global.boss_entry -= 1
-		bitsound(sndWeaponWhip)
-	}
-	
-	if !kRight && !kLeft
-		scrub = 0
-
-	if kRight
-	{
-		scrub += 1
-		if scrub > 30 && scrub/5 = round(scrub/5)
-		{
-			scroll = 0
-			global.boss_entry += 1
-			bitsound(sndWeaponWhip)
-		}
-	}
-
-	if kLeft
-	{
-		scrub += 1
-		if scrub > 30 && scrub/5 = round(scrub/5)
-		{
-			scroll = 0
-			global.boss_entry -= 1
-			bitsound(sndWeaponWhip)
-		}
 	}
 }
 
-if global.enemy_entry < 0
-	global.enemy_entry = 49
-	
-if global.enemy_entry > 49
-	global.enemy_entry = 0
-	
-if global.boss_entry < 0
-	global.boss_entry = 9
-	
-if global.boss_entry > 9
-	global.boss_entry = 0
-	
-if global.view_entry && !visible
+entry_number %= entry_count
+if (entry_number < 0)
+	entry_number = entry_count - 1
+
+// do on scroll
+if (entry_number != last_entry)
 {
-	visible = true
-	bitsound(sndPickupHeart)
-	scroll = 0
-	deactivate()
+	switch entry_type
+	{
+		case BestiaryEntryType.BOSS:
+			onBossScroll(entry_number)
+			break;
+		case BestiaryEntryType.ENEMY:
+			onEnemyScroll(entry_number)
+			break;
+		default:
+			break;
+	}
 }

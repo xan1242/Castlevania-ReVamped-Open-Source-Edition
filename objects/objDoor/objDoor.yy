@@ -26,7 +26,13 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[],
+  "properties":[
+    {"$GMObjectProperty":"v1","%Name":"targetX","filters":[],"listItems":[],"multiselect":false,"name":"targetX","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"32","varType":0,},
+    {"$GMObjectProperty":"v1","%Name":"targetY","filters":[],"listItems":[],"multiselect":false,"name":"targetY","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"32","varType":0,},
+    {"$GMObjectProperty":"v1","%Name":"targetRoom","filters":[
+        "GMRoom",
+      ],"listItems":[],"multiselect":false,"name":"targetRoom","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"rmTestLevelA","path":"rooms/rmTestLevelA/rmTestLevelA.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"rmTestLevelA","varType":5,},
+  ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,

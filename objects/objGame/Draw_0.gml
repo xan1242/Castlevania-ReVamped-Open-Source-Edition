@@ -1,6 +1,7 @@
 /// @description HUD!
+
 scrViewData()
-depth = -9999
+depth = -147
 HUD_x = 2
 HUD_y = 2
 if ds_map_find_value(global.savedata,"spiciness") == 0
@@ -20,14 +21,17 @@ draw_set_halign(fa_left)
 draw_text_outline(xview + HUD_x + 42,yview + HUD_y + 17,c_black,c_white,heart_text)
 draw_text_outline(xview + HUD_x + 32 ,yview + HUD_y + 25,c_black,c_white,money_text)
 
+//if (global.is_touch)
+//	draw_touch_items()
+
 nes_colors()
 
 //debug text
-if round(fps) < 60 && debug_mode
-	draw_text_outline( xview + wview - 32,yview + hview - 8,c_black,nes_red,round(fps) )
+//if round(fps) < 60 && debug_mode
+//	draw_text_outline( xview + wview - 32,yview + hview - 8,c_black,nes_red,round(fps) )
 
-if global.mx = 0 && global.my = 0 && debug_mode
-	draw_text_outline(xview + 8,yview + hview - 8,c_black,nes_red,"Map coordinates not set")
+//if global.mx = 0 && global.my = 0 && debug_mode
+//	draw_text_outline(xview + 8,yview + hview - 8,c_black,nes_red,"Map coordinates not set")
 	
 //boss rush timer
 if global.boss_rush

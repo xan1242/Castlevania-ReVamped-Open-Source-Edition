@@ -1,5 +1,8 @@
 /// @description do it
-draw_sprite_tiled(sprBlackout,0,x,y)
+scrViewData()
+
+draw_set_color(c_black)
+draw_rectangle(xview, yview, xview + wview, yview + hview, false)
 
 draw_set_halign(fa_center)
 draw_set_valign(fa_middle)
